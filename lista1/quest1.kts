@@ -7,4 +7,8 @@ fun main(){
     idade += 1
     
     println("Agora tenho $idade")
+    
+    val i = 1
+    var verificacao = if (i > 0) "positivo" else if (i < 0) "negativo" else "Zero"
+	println(verificacao)
 }
