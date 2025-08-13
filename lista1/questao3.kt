@@ -1,7 +1,7 @@
 fun comprimentoOuZero(comprimento: String?): Int = comprimento?.length ?:0
 
 fun descreveEndereco(rua: String?, numero: Int?, cidade: String?): String{
-    val ruaNova: String = rua ?: "Não informado"
+    val ruaNova = rua ?: "Não informado"
     val numeroNovo = numero ?: "Não informado"
     val cidadeNova = cidade ?: "Não informado"
 
