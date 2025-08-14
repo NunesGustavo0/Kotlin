@@ -38,7 +38,6 @@ fun porcentagemHomens(candidatos: MutableList<Candidato>): Double{
     var cont2: Int = 0
 
     candidatos.forEach {
-        // Verifica se o candidato é do sexo masculino
         if (it.sexo == "M") {
             cont1++
 
@@ -56,7 +55,7 @@ fun contMulheres(candidatos: MutableList<Candidato>): Int{
     var cont: Int = 0
 
     candidatos.forEach {
-        if(it.idade != null && it.idade < 35){
+        if(it.idade != null && it.idade < 35 && it.sexo == "F"){
             if(it.expServico == true){
                 cont++
             }
@@ -79,9 +78,23 @@ fun menorIdadeMulher(candidatos: MutableList<Candidato>): Int?{
     return menorIdade
 }
 
+fun inscricaoMulheres(candidatos: MutableList<Candidato>): MutableList<String?> {
+    val inscricoes = mutableListOf<String?>()
+    candidatos.forEach {
+        if (it.sexo == "F" && it.idade != null && it.idade < 35 && it.expServico == true) {
+            inscricoes.add(it.nInscricao)
+        }
+    }
+    return inscricoes
+}
+
 fun main() {
     var decisao: Int = 0
     val candidatos = mutableListOf<Candidato>()
+
+    repeat(20){
+        val inscricao: String?
+    }
 
     candidatos.add(Candidato("454512", 41, "M", true))
     candidatos.add(Candidato("665720", 19, "F", false))
@@ -99,5 +112,6 @@ fun main() {
     println("d) Porcentagem dos homens com mais de 45 anos entre o total de homens: ${porcentagemHomens(candidatos)}")
     println("e) Mulheres com menos de 35 anos e com experiência no serviço: ${contMulheres(candidatos)}")
     println("f) Menor idade entre mulheres que já têm experiência no serviço: ${menorIdadeMulher(candidatos)}")
+    println("O número de inscrição das mulheres com menos de 35 anos e com experiência no serviço: ${inscricaoMulheres(candidatos)}")
 
 }
